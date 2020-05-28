@@ -4,7 +4,10 @@ node_js:
    - "8"
 before_script:
   - npm install
-  - npm run build:watch
+  - npm run build
+cache:
+  directories:
+    - ~/.npm
 notifications:
   email: true
 # Taken from:  https://github.com/mdix/es6-babel-browserify-karma-boilerplate/blob/master/.travis.yml#L3

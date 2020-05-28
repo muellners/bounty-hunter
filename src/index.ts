@@ -18,7 +18,7 @@ export = (app: Application) => {
   })
 
   app.on('pull_request.closed', async (context) => {
-    const issueComment = context.issue({ body: 'Sad that you have to close this!' })
+    const issueComment = context.issue({ body: 'Too bad tou had to close this!' })
     await context.github.issues.createComment(issueComment)
   })
   // For more information on building apps:
