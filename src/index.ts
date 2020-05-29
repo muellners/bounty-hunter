@@ -7,18 +7,18 @@ export = (app: Application) => {
   })
 
   app.on('pull_request.opened', async (context) => {
-    const pr =context.payload.pull_request
-    const user = pr.user.login //Collecting Details of the person who created the PR
+    const pr = context.payload.pull_request
+    const user = pr.user.login // Collecting Details of the person who created the PR
 
-    const issueComment = context.issue({ body: 'Hey @'+ user +'. Thanks for opening this PR!' })
+    const issueComment = context.issue({ body: 'Hey @' + user + '. Thanks for opening this PR!' })
     await context.github.issues.createComment(issueComment)
   })
 
   app.on('pull_request.reopened', async (context) => {
-    const pr =context.payload.pull_request
-    const user = pr.user.login //Collecting Details of the person who created the PR
+    const pr = context.payload.pull_request
+    const user = pr.user.login // Collecting Details of the person who created the PR
 
-    const issueComment = context.issue({ body: 'Hey @'+ user +'. Thanks for reopening this PR!' })
+    const issueComment = context.issue({ body: 'Hey @' + user + '. Thanks for reopening this PR!' })
     await context.github.issues.createComment(issueComment)
   })
 
