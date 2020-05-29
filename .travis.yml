@@ -1,24 +1,23 @@
 dist: xenial
 language: node_js
 node_js:
-- '8'
-before_install:
-- openssl aes-256-cbc -K $encrypted_7c6d6a63bded_key -iv $encrypted_7c6d6a63bded_iv
-  -in muellners-bounty-hunter.2020-05-27.private-key.pem.enc -out muellners-bounty-hunter.2020-05-27.private-key.pem
-  -d
-run:
-- npm run build
-env:
-- APP_ID=66599
-- WEBHOOK_SECRET=secret
-- LOG_LEVEL=debug
-- NODE_ENV=production
+  - '8'
+
 deploy:
   provider: heroku
   api_key:
-    secure: XI00YOq5SUo9KXF9utRBYms6OcQ7tNZvn1CBQ7WAqpNxNHs/m1sGNuDuq8iwLNx5Ng12y5xkgbKM5nOEiIIymxOYCeAfPGZDEoQkTJZsETL+kyN13lhpiZWq6f1I6KW2WjgRIeZQljACDlr1v2sF00LudNWhPKyHT1ze8mdp9lkWr9E0xwpIPmZ6Zouu/yqHlT7NQy6N86Y4RkxHqrQd7az4kETbqyCSigNG3H2lp6/47Zv6O6cfusGepKvzqBMW8DnhpYIkpevtNYyadja6MkQBXaqUFE7d1YZfUODtYi1pUI/1NjT7RW+i+FvHD+4Xb70ZCW0dGiEInVHxolg6WRLppUV7AnPH+n0/ec3DBCJgsj6yloAwPu2JEcA+JKByLu/fNQRec6YtCe98TaCChG+S8+8QM7FI+CPhqzHcZCXkeb2E0neNmSOznykN8e31yn95y+eooZIOvAattRO7FPg/DWfhI0zQgeITapCv4ppopr3nX5oxY4jurWmd0NMuYoAu8DkvluW9v+AvxCzfwrzTgelJVFHXEN6Mv+u8uxNIyajiCeY8BU7Ykhatnztvdno4x29FTjEE8iO9M88HxP/6tSDQjtH5rYVV2pTkyRuD0GJZDg4o54FFJFhRGeMCQZOgU71YNQ5bo7sSkyU6vgWaGrf+3QL8aKzMcfLqIOc=
+    secure: vn0p956Q4PhxHl1sCPPdx/lpzrUEmIwNg5x4bwzcP9OQREl9BP25DLfGjZNhNB7lbcaRIUwZdwiYQVNq1QrHnG0j/8vTJrkA3w2F677v0MM4DQl3ecrknyAPJksYk1hMPVsayEkVymqcbVbwMRJHe18lKKeqFsuH8FsmXYA6oeBYlEl1VywZpeKNCEO9kv89blRb9sB7sbvW+rYL07oiJgoqOKCCBxVDJQtM6gmi/q5pK5DIHTLeV8vMNU8MxVJkUNnrI/K9kWlmDOF2lpvVBp3PwvAry0z641PtF/OSBFF2PLEnmmUmYbQEJ4QB/M2e2Uw+Fk7KRXCwuGPGHSb5go5K4gjr/q1ZUHo2IAn2L1K9TaVkD849w4CAFht51jZNIEZZtw+LOf8ePzjMzQooa6Jp8UJUeeg0f2jywUGr6tFlRRMgy/Sn6pLc32Fma56pC3kDeFDsB7+ELGvoqEfkgBq9z7u6u6fB7DsyoAV2flazUM2gEN/GimijGthqagzhmcVxnNkZXwLPh7V7wyEFxZiQmfoH5RXfLUxM9O1mbafV7a8Z5j0Q3s6oF3Q9VgFIdAlNPNGy/lY80oGbR6/MTZZBihkqiMuOx6UJuNi5VuaKVyGCecJEsxLba1B5gnkImM6Yygxtj2VxXFC/zdbcphW9hQ48uxX/4Xkse0NI6PA=
   on: master
   app: muellners-bounty-hunter
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_7c6d6a63bded_key -iv $encrypted_7c6d6a63bded_iv -in muellners-bounty-hunter.2020-05-27.private-key.pem.enc -out muellners-bounty-hunter.2020-05-27.private-key.pem -d
+run:
+  - npm run build
+
+env:
+  - APP_ID=66599 WEBHOOK_SECRET=secret LOG_LEVEL=debug
+
 cache:
   directories:
   - "~/.npm"
