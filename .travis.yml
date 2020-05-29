@@ -12,7 +12,7 @@ env:
 - APP_ID=66599
 - WEBHOOK_SECRET=secret
 - LOG_LEVEL=debug
-- WEBHOOK_PROXY_URL=https://smee.io/taSj8r3gb8yMw4E4
+- NODE_ENV=production
 deploy:
   provider: heroku
   api_key:
