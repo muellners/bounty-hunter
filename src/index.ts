@@ -1,6 +1,11 @@
 import { Application } from 'probot' // eslint-disable-line no-unused-vars
 
 export = (app: Application) => {
+  app.on('issues.opened', async context => {
+    const issueComment = context.issue({ body: 'Thanks for opening this issue!' })
+    context.github.issues.createComment(issueComment)
+  })
+
   app.on('pull_request.opened', async (context) => {
     const pr =context.payload.pull_request
     const user = pr.user.login //Collecting Details of the person who created the PR
